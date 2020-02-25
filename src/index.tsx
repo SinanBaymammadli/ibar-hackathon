@@ -8,7 +8,6 @@ import { Main } from "./app/main";
 import { store } from "./app/redux/store";
 
 import * as serviceWorker from "./serviceWorker";
-import "./index.scss";
 
 ReactDOM.render(
   <Provider store={store}>
