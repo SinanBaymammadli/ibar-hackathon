@@ -1,12 +1,10 @@
 import React from "react";
-// import { TextInput } from "../../../../components/text_input";
 import { IFormProps } from "../../../../core/models";
 import { isPending } from "../../../../core/redux";
-import { userFormValidation, IUserForm, EUserType, IUserType, userTypeOptions } from "../../data/entities";
-// import { FormButton } from "../../../../components/form_button";
-// import { Form } from "../../../../components/form";
-// import { Grid } from "@material-ui/core";
-// import { SelectInput } from "../../../../components/select_input";
+import { userFormValidation, IUserForm } from "../../data/entities";
+import { Row, Col, Button } from "antd";
+import { Form } from "../../../../components/form";
+import { TextInput } from "../../../../components/textInput";
 
 interface IProps extends IFormProps<IUserForm> {}
 
@@ -16,40 +14,27 @@ export const UserForm: React.FC<IProps> = (props: IProps) => {
 
   return (
     <>
-      {/* <Grid container justify="center">
-        <Grid item md={8} lg={6}>
+      <Row justify="center">
+        <Col sm={24} md={8}>
           <Form<IUserForm>
             {...props}
             initialValues={{
               name: "",
-              balance: 0,
-              salary: 0,
-              info: "",
-              type: EUserType.BUYER,
             }}
             validationSchema={userFormValidation}
           >
-            {({ values }) => (
+            {() => (
               <>
                 <TextInput label="Name" name="name" />
-                <TextInput label="balance" name="balance" type="number" />
-                <TextInput label="salary" name="salary" type="number" />
-                <TextInput label="info" name="info" />
 
-                <SelectInput<IUserType>
-                  value={values.type}
-                  options={userTypeOptions}
-                  name="type"
-                  label="User type"
-                  renderLabel={(a) => a.label}
-                />
-
-                <FormButton label={submitTitle} loading={loading} />
+                <Button type="primary" htmlType="submit" loading={loading}>
+                  {submitTitle}
+                </Button>
               </>
             )}
           </Form>
-        </Grid>
-      </Grid> */}
+        </Col>
+      </Row>
     </>
   );
 };

@@ -14,7 +14,12 @@ export const TextInput: React.FC<IProps> = ({ label, name, type, onChange, onBlu
     <Field name={name} validate={validate}>
       {({ field, meta }: FieldProps): JSX.Element => {
         return (
-          <Form.Item label={label}>
+          <Form.Item
+            name={name}
+            label={label}
+            validateStatus={Boolean(meta.touched && meta.error) ? "error" : ""}
+            help={meta.touched && meta.error}
+          >
             <Input
               type={type}
               name={name}
@@ -28,13 +33,6 @@ export const TextInput: React.FC<IProps> = ({ label, name, type, onChange, onBlu
                 field.onBlur(e);
                 onBlur && onBlur(e);
               }}
-              // size="small"
-              // label={label}
-              // fullWidth
-              // variant="filled"
-              // margin="normal"
-              // error={Boolean(meta.touched && meta.error)}
-              // helperText={meta.touched && meta.error}
               {...rest}
             />
           </Form.Item>

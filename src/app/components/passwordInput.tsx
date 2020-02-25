@@ -14,7 +14,12 @@ export const PasswordInput: React.FC<IProps> = ({ label, name, onChange, onBlur,
     <Field name={name} validate={validate}>
       {({ field, meta }: FieldProps): JSX.Element => {
         return (
-          <Form.Item label={label}>
+          <Form.Item
+            name={name}
+            label={label}
+            validateStatus={Boolean(meta.touched && meta.error) ? "error" : ""}
+            help={meta.touched && meta.error}
+          >
             <Input.Password
               name={name}
               value={meta.value}
@@ -27,13 +32,6 @@ export const PasswordInput: React.FC<IProps> = ({ label, name, onChange, onBlur,
                 field.onBlur(e);
                 onBlur && onBlur(e);
               }}
-              // size="small"
-              // label={label}
-              // fullWidth
-              // variant="filled"
-              // margin="normal"
-              // error={Boolean(meta.touched && meta.error)}
-              // helperText={meta.touched && meta.error}
               {...rest}
             />
           </Form.Item>

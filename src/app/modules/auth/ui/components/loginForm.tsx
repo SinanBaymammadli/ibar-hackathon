@@ -1,12 +1,15 @@
 import React from "react";
-import { Form, Input, Button, Card, Typography } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { Form, Button, Card, Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { IAppReduxState } from "../../../../redux/store";
 import { IAsyncData } from "../../../../core/models";
 import { isPending } from "../../../../core/redux";
 import { authRedux } from "../state/state";
 import { ErrorPanel } from "../../../../components/errorPanel";
+import { ILoginForm, loginFormValidation } from "../../data/entites";
+import { Formik } from "formik";
+import { TextInput } from "../../../../components/textInput";
+import { PasswordInput } from "../../../../components/passwordInput";
 
 export const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,7 +17,7 @@ export const LoginForm: React.FC = () => {
   const loginBranch = useSelector<IAppReduxState, IAsyncData<void>>((state) => state.auth.login);
   const loading = isPending(loginBranch);
 
-  async function onLogin(form: any) {
+  async function onLogin(form: ILoginForm) {
     await dispatch(authRedux.actions.login(form));
     dispatch(authRedux.actions.checkAuth());
   }
@@ -25,21 +28,26 @@ export const LoginForm: React.FC = () => {
 
       <ErrorPanel branch={loginBranch} />
 
-      <Form onFinish={onLogin}>
-        <Form.Item name="email" validateStatus="error">
-          <Input prefix={<UserOutlined />} placeholder="Username" />
-        </Form.Item>
+      <Formik<ILoginForm>
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        validationSchema={loginFormValidation}
+        onSubmit={onLogin}
+      >
+        {({ submitForm }) => (
+          <Form onFinish={submitForm} layout="vertical">
+            <TextInput label="Email" name="email" type="email" />
 
-        <Form.Item name="password" rules={[{ required: true, message: "Please input your Password!" }]}>
-          <Input.Password prefix={<LockOutlined />} placeholder="Password" />
-        </Form.Item>
+            <PasswordInput label="Password" name="password" />
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit" loading={loading}>
-            Log in
-          </Button>
-        </Form.Item>
-      </Form>
+            <Button type="primary" htmlType="submit" loading={loading}>
+              Log in
+            </Button>
+          </Form>
+        )}
+      </Formik>
     </Card>
   );
 };
