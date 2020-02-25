@@ -1,9 +1,9 @@
-import { ApiClient } from "./apiClient";
+import { IApiClient } from "./apiClient";
 import { ICRUDRepo } from "./models";
 import { Failure } from "./failure";
 
 export function generateCrudRepoFactory<T, TForm>(
-  apiClient: ApiClient,
+  apiClient: IApiClient,
   url: string,
   fromJson: (json: any) => T,
   toJson: (form: TForm) => any,

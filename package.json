@@ -37,6 +37,7 @@
   },
   "proxy": "http://localhost:4400",
   "dependencies": {
+    "antd": "^3.26.12",
     "axios": "^0.19.2",
     "date-fns": "^2.9.0",
     "formik": "^2.1.4",
@@ -77,6 +78,6 @@
     "now": "^17.0.4",
     "prettier": "^1.19.1",
     "react-scripts": "3.4.0",
-    "typescript": "~3.8.2"
+    "typescript": "~3.7.2"
   }
 }

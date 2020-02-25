@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IAppReduxState } from "../../../../redux/store";
-import TableCell from "@material-ui/core/TableCell";
+// import TableCell from "@material-ui/core/TableCell";
 import { ROUTES } from "../../../../routes";
 import { IAsyncData } from "../../../../core/models";
 import { userRedux } from "../state/state";
 import { IUser } from "../../data/entities";
-import { ListTable } from "../../../../components/list_table";
-import { CreateButton } from "../../../../components/create_button";
+// import { ListTable } from "../../../../components/list_table";
+// import { CreateButton } from "../../../../components/create_button";
 
 export const UserListPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ export const UserListPage: React.FC = () => {
 
   return (
     <div>
-      <CreateButton route={ROUTES.user} />
+      {/* <CreateButton route={ROUTES.user} />
 
       <ListTable<IUser>
         branch={userListBranch}
@@ -46,7 +46,7 @@ export const UserListPage: React.FC = () => {
             <TableCell>{user.salary} AZN</TableCell>
           </>
         )}
-      />
+      /> */}
     </div>
   );
 };
