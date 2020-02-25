@@ -6,7 +6,7 @@ export const LoginPage: React.FC = () => {
   return (
     <>
       <Row justify="center">
-        <Col sm={24} md={8}>
+        <Col xs={24} sm={24} md={8}>
           <LoginForm />
         </Col>
       </Row>
