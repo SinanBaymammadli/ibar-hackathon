@@ -5,7 +5,7 @@ import { generateCrudRepoFactory } from "../../../core/crud";
 
 interface IUserRepo extends ICRUDRepo<IUser, IUserForm> {}
 
-const URL = "v1/user";
+const URL = "users";
 
 const UserRepoImplFactory = (apiClient: IApiClient): IUserRepo => {
   const r: IUserRepo = {

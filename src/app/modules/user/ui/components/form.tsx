@@ -16,7 +16,7 @@ export const UserForm: React.FC<IProps> = (props: IProps) => {
     <>
       <Row justify="center">
         <Col sm={24} md={8}>
-          <Form<IUserForm>
+          <Form<any>
             {...props}
             initialValues={{
               name: "",

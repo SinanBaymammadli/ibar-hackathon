@@ -1,9 +1,18 @@
 {
     "users": [
         {
+            "id": 1,
             "email": "test@test.te",
             "password": "$2a$10$HM2yX5.sM8N6.GYQzBLY5.UMFTYO2ScwqnEV8GWxIhuU8zN3rQNBy",
-            "id": 1
+            "username": "Fafa",
+            "phone": "0503703375",
+            "firstName": "Qazanfar",
+            "lastName": "Aghayev",
+            "companyName": "RISK",
+            "filePath": "test",
+            "createdDate": "25.02.2020",
+            "updatedDate": "25.02.2020",
+            "version": 1
         }
     ]
 }

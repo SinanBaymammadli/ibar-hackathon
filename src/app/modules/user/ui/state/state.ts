@@ -4,7 +4,7 @@ import { IUser, IUserForm } from "../../data/entities";
 import { UserRepoImpl } from "../../data/repo";
 
 export const userRedux = generateCrudRedux<IUser, IUserForm>({
-  actionTypeName: "User",
+  actionTypeName: "Users",
   repository: UserRepoImpl,
 });
 
